@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: app-april
+  name: april-bff
+spec:
+  rules:
+    - host: april-bff-k8s.april.com
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: april-bff
+                port:
+                  number: 8000

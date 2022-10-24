@@ -1,0 +1,38 @@
+app:
+    name: &appName april-bff
+    env: &appEnv prod
+http:
+    address: 0.0.0.0:8000
+    timeout: 30s
+trace:
+    name: *appName
+    env: *appEnv
+    level: prod
+    jaeger:
+        endpoint: http://10.0.5.176:14268/api/traces
+    aliConfig:
+        project: ""
+        instanceId: ""
+        endpoint: ""
+        accessKey: ""
+        accessSecret: ""
+qiniu:
+    accessKey: ""
+    secretKey: ""
+    bucket: operations-placing-system
+    url: https://ops.c360dn.com
+    isPrivate: false
+clientSet:
+    fieldDef: dns:///field-definitions.operation-placing-system:9000
+    operationalPos: dns:///operational-positions.operation-placing-system:9000
+    material: dns:///operations-materials.operation-placing-system:9000
+    dataEnv: dns:///operations-data-env.operation-placing-system:9000
+    operationalBasicSvcAddr: dns:///operational-basic.operation-placing-system:9000
+params:
+recorder:
+  filePath: /opt/logs/april.log
+  maxSize: 100
+  maxAge: 1
+  maxBackups: 5
+html5:
+    html5URLPrefix: https://ops-h5.camera360.com/t1
